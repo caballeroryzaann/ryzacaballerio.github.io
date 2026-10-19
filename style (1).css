@@ -1,0 +1,152 @@
+:root {
+  --ink: #fbf1e6;
+  --muted: #dcc3ae;
+  --accent: #f2b36b;
+  --accent-strong: #ffd29a;
+  --wine: #7a1f2e;
+  --glass: rgba(28, 10, 14, 0.58);
+  --glass-strong: rgba(48, 16, 24, 0.62);
+  --line: rgba(242, 179, 107, 0.28);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.65;
+  color: var(--ink);
+  background: #1a0a0e;
+}
+
+/* ---------- Video background ---------- */
+.video-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: #1a0a0e;
+}
+.video-bg video {
+  position: absolute;
+  top: 50%; left: 50%;
+  min-width: 100%; min-height: 100%;
+  width: auto; height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+/* warm dark wash keeps text readable over the bright candle flames */
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(26, 10, 14, 0.35) 0%, rgba(26, 10, 14, 0.7) 100%),
+    linear-gradient(180deg, rgba(40, 10, 18, 0.35), rgba(26, 10, 14, 0.55));
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-strong); text-decoration: underline; }
+
+h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; margin: 0; }
+
+/* ---------- Navigation ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 28px;
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.logo { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; font-weight: 700; color: var(--ink); }
+.nav nav a { margin-left: 20px; color: var(--ink); font-size: 0.95rem; }
+.nav nav a:hover { color: var(--accent-strong); }
+
+main { max-width: 920px; margin: 0 auto; padding: 0 24px 40px; }
+
+/* ---------- Hero ---------- */
+.hero { padding: 120px 0 90px; text-align: center; }
+.eyebrow { letter-spacing: 0.3em; text-transform: uppercase; font-size: 0.8rem; color: var(--accent); margin: 0 0 8px; }
+.hero h1 {
+  font-size: clamp(3rem, 9vw, 5.4rem);
+  line-height: 1.05;
+  color: #fff;
+  text-shadow: 0 2px 30px rgba(242, 150, 80, 0.5);
+}
+.tagline { font-size: 1.15rem; color: var(--muted); max-width: 560px; margin: 18px auto 0; }
+
+.buttons { margin-top: 32px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn {
+  padding: 11px 26px; border-radius: 999px;
+  border: 1px solid var(--accent); color: var(--ink);
+  background: var(--glass);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #2a0d12; font-weight: 500; }
+.btn:hover { text-decoration: none; color: inherit; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(242, 150, 80, 0.4); }
+.btn.primary:hover { color: #2a0d12; }
+
+/* ---------- Panels ---------- */
+.panel {
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 34px 36px;
+  margin-bottom: 28px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+.panel h2 { font-size: 2rem; margin-bottom: 14px; color: #fff; }
+.panel h2::after {
+  content: ""; display: block; width: 48px; height: 2px; margin-top: 8px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+/* ---------- Project cards ---------- */
+.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 18px; }
+.card {
+  background: var(--glass-strong);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 14px 30px rgba(200, 90, 60, 0.35); }
+.card h3 { font-size: 1.4rem; margin-bottom: 6px; color: #fff; }
+.card p { margin: 8px 0; font-size: 0.95rem; color: var(--muted); }
+
+.tags span, .pills li {
+  display: inline-block; font-size: 0.8rem;
+  padding: 2px 11px; margin: 0 6px 6px 0;
+  border-radius: 999px; border: 1px solid var(--line); color: var(--accent-strong);
+}
+.pills { list-style: none; padding: 0; margin: 12px 0 0; }
+.pills li { font-size: 0.95rem; padding: 6px 16px; color: var(--ink); background: var(--glass-strong); }
+
+.links a { margin-right: 18px; font-weight: 500; }
+
+/* ---------- Timeline ---------- */
+.timeline { margin-top: 14px; }
+.timeline .item { border-left: 2px solid var(--accent); padding-left: 18px; margin-bottom: 22px; }
+.timeline h3 { font-size: 1.3rem; color: #fff; }
+.timeline p { color: var(--muted); margin: 2px 0; }
+.meta { color: var(--accent) !important; font-size: 0.9rem; margin: 2px 0 4px; }
+
+footer { text-align: center; padding: 28px; color: var(--muted); font-size: 0.9rem; }
+
+/* ---------- Accessibility & small screens ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .video-bg video { display: none; }
+  .video-bg { background: #1a0a0e url("poster.jpg") center / cover no-repeat; }
+  html { scroll-behavior: auto; }
+}
+
+@media (max-width: 600px) {
+  .nav { padding: 12px 16px; }
+  .nav nav a { margin-left: 10px; font-size: 0.82rem; }
+  .panel { padding: 24px 20px; }
+  .hero { padding: 80px 0 56px; }
+}
